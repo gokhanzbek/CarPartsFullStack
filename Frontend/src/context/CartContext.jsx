@@ -1,11 +1,12 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 import api from '../api/axiosInstance';
 import { AuthContext } from './AuthContext';
+import { toast } from 'react-toastify';
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-    const { token } = useContext(AuthContext);
+    const { token, role } = useContext(AuthContext);
     const [cartItems, setCartItems] = useState([]);
 
     const fetchCart = async () => {
@@ -28,11 +29,21 @@ export const CartProvider = ({ children }) => {
     }, [token]);
 
     const addToCart = async (productId, quantity = 1) => {
+        if (role === 'Admin') {
+            return;
+        }
+
+        if (!token) {
+            toast.warning('Sepete ürün eklemek için lütfen giriş yapın!');
+            return;
+        }
         try {
             await api.post('/carts/items', { productId, quantity });
             fetchCart();
+            toast.success('Ürün sepete eklendi!');
         } catch (error) {
             console.error("Failed to add to cart", error);
+            toast.error('Ürün sepete eklenirken bir hata oluştu.');
         }
     };
 

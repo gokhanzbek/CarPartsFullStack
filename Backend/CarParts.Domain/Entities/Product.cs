@@ -13,5 +13,11 @@ namespace CarParts.Domain.Entities
         
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
+        public bool IsFeatured { get; set; }
+
+        public string? CarMake { get; set; }
+        public string? CarModel { get; set; }
+        public string? CarEngine { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

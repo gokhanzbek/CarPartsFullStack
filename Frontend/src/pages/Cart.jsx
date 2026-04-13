@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
-import { Minus, Plus, Trash2, ArrowRight } from 'lucide-react';
+import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Cart() {
@@ -11,18 +11,50 @@ export default function Cart() {
 
     if (cartItems.length === 0) {
         return (
-            <div className="flex flex-col items-center justify-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100">
-                <div className="text-gray-400 mb-6 bg-gray-50 p-6 rounded-full">
-                    <Trash2 size={48} />
+            <div className="flex min-h-[70vh] flex-col items-center justify-center rounded-2xl border border-slate-100 bg-white px-4 py-16 text-center shadow-sm">
+                <div className="relative mb-7">
+                    <div className="absolute inset-0 rounded-full bg-blue-500/15 blur-2xl" />
+                    <div className="relative rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 p-7 text-blue-700 shadow-sm">
+                        <ShoppingBag size={54} />
+                    </div>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Sepetiniz Boş</h2>
-                <p className="text-gray-500 mb-8">Henüz sepetinize parça eklemediniz.</p>
-                <button
-                    onClick={() => navigate('/')}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-colors shadow-sm"
-                >
-                    Alışverişe Başla
-                </button>
+                <h2 className="mb-2 text-2xl font-bold text-slate-800">Sepetiniz Boş</h2>
+                <p className="mb-8 max-w-xl text-slate-500">
+                    Gorunuse gore sepetiniz henuz bos. Araciniz icin en iyi parcalari kesfetmeye hemen baslayin.
+                </p>
+
+                <div className="mb-8 flex flex-col items-center gap-3 sm:flex-row">
+                    <button
+                        onClick={() => navigate('/')}
+                        className="rounded-xl bg-blue-600 px-8 py-3 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md"
+                    >
+                        Urunleri Kesfet
+                    </button>
+                    <button
+                        onClick={() => navigate('/')}
+                        className="rounded-xl border border-slate-200 px-6 py-3 font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                    >
+                        Ana Sayfaya Don
+                    </button>
+                </div>
+
+                <div className="w-full max-w-2xl rounded-2xl border border-slate-100 bg-slate-50/70 p-5">
+                    <div className="mb-4 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-slate-500">
+                        <Sparkles size={16} />
+                        Ilginizi Cekebilecek Kategoriler
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                        {['Motor', 'Fren', 'Suspansiyon', 'Aydinlatma'].map((category) => (
+                            <button
+                                key={category}
+                                onClick={() => navigate('/')}
+                                className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+                            >
+                                {category}
+                            </button>
+                        ))}
+                    </div>
+                </div>
             </div>
         );
     }

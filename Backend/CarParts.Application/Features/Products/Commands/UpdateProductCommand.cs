@@ -14,6 +14,11 @@ namespace CarParts.Application.Features.Products.Commands
         public decimal Price { get; set; }
         public int Stock { get; set; }
         public int CategoryId { get; set; }
+        public string? CarMake { get; set; }
+        public string? CarModel { get; set; }
+        public string? CarEngine { get; set; }
+        public bool IsFeatured { get; set; }
+        public string? ImageUrl { get; set; }
     }
 
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, ApiResponse<bool>>
@@ -39,6 +44,15 @@ namespace CarParts.Application.Features.Products.Commands
             product.Price = request.Price;
             product.Stock = request.Stock;
             product.CategoryId = request.CategoryId;
+            product.CarMake = request.CarMake;
+            product.CarModel = request.CarModel;
+            product.CarEngine = request.CarEngine;
+            product.IsFeatured = request.IsFeatured;
+
+            if (!string.IsNullOrEmpty(request.ImageUrl))
+            {
+                product.ImageUrl = request.ImageUrl;
+            }
 
             await _context.SaveChangesAsync(cancellationToken);
 

@@ -26,7 +26,8 @@ namespace CarParts.Application.Features.Auth.Commands
 
         public async Task<ApiResponse<AuthResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == request.Username, cancellationToken);
+            var user = await _context.Users.FirstOrDefaultAsync(u => 
+                u.Username == request.Username || u.Email == request.Username, cancellationToken);
 
             if (user == null || user.PasswordHash != request.Password) // Note: Not using secure hash for simplicity
             {

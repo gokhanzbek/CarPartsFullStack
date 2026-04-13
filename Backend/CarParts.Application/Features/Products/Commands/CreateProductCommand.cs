@@ -14,6 +14,11 @@ namespace CarParts.Application.Features.Products.Commands
         public decimal Price { get; set; }
         public int Stock { get; set; }
         public int CategoryId { get; set; }
+        public string? ImageUrl { get; set; }
+        public string? CarMake { get; set; }
+        public string? CarModel { get; set; }
+        public string? CarEngine { get; set; }
+        public bool IsFeatured { get; set; }
     }
 
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ApiResponse<int>>
@@ -33,7 +38,12 @@ namespace CarParts.Application.Features.Products.Commands
                 Brand = request.Brand,
                 Price = request.Price,
                 Stock = request.Stock,
-                CategoryId = request.CategoryId
+                CategoryId = request.CategoryId,
+                ImageUrl = request.ImageUrl,
+                CarMake = request.CarMake,
+                CarModel = request.CarModel,
+                CarEngine = request.CarEngine,
+                IsFeatured = request.IsFeatured
             };
 
             _context.Products.Add(product);

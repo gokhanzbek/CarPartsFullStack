@@ -117,22 +117,42 @@ namespace CarParts.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Motor Parçaları"
+                            Name = "Motor Yağları"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Fren Sistemi"
+                            Name = "Fren Parçaları"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Süspansiyon"
+                            Name = "Kayış & Kasnak"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Elektrik & Aydınlatma"
+                            Name = "Vites & Şanzıman"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Aydınlatma & Ayna"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Motor Parçaları"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Süspansiyon"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Diğer"
                         });
                 });
 
@@ -193,8 +213,23 @@ namespace CarParts.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CarEngine")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CarMake")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CarModel")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsFeatured")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -217,7 +252,11 @@ namespace CarParts.Infrastructure.Migrations
                         {
                             Id = 1,
                             Brand = "Bosch",
-                            CategoryId = 1,
+                            CarEngine = "2.0",
+                            CarMake = "BMW",
+                            CarModel = "3 Serisi",
+                            CategoryId = 6,
+                            IsFeatured = true,
                             Name = "Bosch 4 Tırnak Buji Seti",
                             Price = 450.00m,
                             Stock = 50
@@ -226,7 +265,11 @@ namespace CarParts.Infrastructure.Migrations
                         {
                             Id = 2,
                             Brand = "Brembo",
+                            CarEngine = "1.8 TFSI",
+                            CarMake = "Audi",
+                            CarModel = "A4",
                             CategoryId = 2,
+                            IsFeatured = true,
                             Name = "Brembo Ön Fren Balatası",
                             Price = 1250.00m,
                             Stock = 30
@@ -235,7 +278,11 @@ namespace CarParts.Infrastructure.Migrations
                         {
                             Id = 3,
                             Brand = "Monroe",
-                            CategoryId = 3,
+                            CarEngine = "1.6",
+                            CarMake = "Mercedes",
+                            CarModel = "C Serisi",
+                            CategoryId = 7,
+                            IsFeatured = false,
                             Name = "Monroe Arka Amortisör",
                             Price = 2100.00m,
                             Stock = 15
@@ -244,7 +291,11 @@ namespace CarParts.Infrastructure.Migrations
                         {
                             Id = 4,
                             Brand = "Osram",
-                            CategoryId = 4,
+                            CarEngine = "1.4 TSI",
+                            CarMake = "Volkswagen",
+                            CarModel = "Golf",
+                            CategoryId = 5,
+                            IsFeatured = true,
                             Name = "Osram Night Breaker H7 Ampul",
                             Price = 650.00m,
                             Stock = 100
@@ -253,7 +304,11 @@ namespace CarParts.Infrastructure.Migrations
                         {
                             Id = 5,
                             Brand = "Castrol",
+                            CarEngine = "2.0d",
+                            CarMake = "BMW",
+                            CarModel = "5 Serisi",
                             CategoryId = 1,
+                            IsFeatured = false,
                             Name = "Castrol Edge 5W-30 Motor Yağı (4L)",
                             Price = 1100.00m,
                             Stock = 80
@@ -262,7 +317,11 @@ namespace CarParts.Infrastructure.Migrations
                         {
                             Id = 6,
                             Brand = "TRW",
+                            CarEngine = "2.0 TDI",
+                            CarMake = "Audi",
+                            CarModel = "A6",
                             CategoryId = 2,
+                            IsFeatured = false,
                             Name = "TRW Fren Diski Ön",
                             Price = 1850.00m,
                             Stock = 20
@@ -271,7 +330,11 @@ namespace CarParts.Infrastructure.Migrations
                         {
                             Id = 7,
                             Brand = "Varta",
-                            CategoryId = 4,
+                            CarEngine = "2.0",
+                            CarMake = "Mercedes",
+                            CarModel = "E Serisi",
+                            CategoryId = 8,
+                            IsFeatured = true,
                             Name = "Varta 72 Amper Akü",
                             Price = 3200.00m,
                             Stock = 10
@@ -280,10 +343,681 @@ namespace CarParts.Infrastructure.Migrations
                         {
                             Id = 8,
                             Brand = "KYB",
-                            CategoryId = 3,
+                            CarEngine = "1.6 TDI",
+                            CarMake = "Volkswagen",
+                            CarModel = "Passat",
+                            CategoryId = 7,
+                            IsFeatured = false,
                             Name = "KYB Ön Helezon Yayı",
                             Price = 850.00m,
                             Stock = 25
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Brand = "Mann",
+                            CarEngine = "1.6",
+                            CarMake = "BMW",
+                            CarModel = "3 Serisi",
+                            CategoryId = 8,
+                            IsFeatured = true,
+                            Name = "Mann Hava Filtresi",
+                            Price = 350.00m,
+                            Stock = 100
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Brand = "Bosch",
+                            CarEngine = "2.0 TDI",
+                            CarMake = "Audi",
+                            CarModel = "A4",
+                            CategoryId = 8,
+                            IsFeatured = false,
+                            Name = "Bosch Silecek Takımı",
+                            Price = 400.00m,
+                            Stock = 60
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Brand = "Audi Genuine",
+                            CarEngine = "1.8 TFSI",
+                            CarMake = "Audi",
+                            CarModel = "A4",
+                            CategoryId = 6,
+                            ImageUrl = "/images/products/055c217b-83a7-4d9e-8b4f-5cba7d064f95.png",
+                            IsFeatured = false,
+                            Name = "Audi A4 1.8 TFSI Turbo Şarj Ünitesi",
+                            Price = 24500.00m,
+                            Stock = 5
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Brand = "Febi",
+                            CarEngine = "1.8 TFSI",
+                            CarMake = "Audi",
+                            CarModel = "A4",
+                            CategoryId = 6,
+                            ImageUrl = "/images/products/0d4c4ffe-6832-4319-97ec-4274e88b439a.png",
+                            IsFeatured = false,
+                            Name = "Audi A4 1.8 TFSI Yağ Pompası",
+                            Price = 3200.00m,
+                            Stock = 12
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Brand = "NGK",
+                            CarEngine = "1.8 TFSI",
+                            CarMake = "Audi",
+                            CarModel = "A4",
+                            CategoryId = 6,
+                            ImageUrl = "/images/products/0e65670d-b597-4ea5-9dc0-78cf57ff09b4.png",
+                            IsFeatured = false,
+                            Name = "Audi A4 1.8 TFSI Ateşleme Bobini",
+                            Price = 1150.00m,
+                            Stock = 40
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Brand = "BMW Genuine",
+                            CarEngine = "2.0",
+                            CarMake = "BMW",
+                            CarModel = "3 Serisi",
+                            CategoryId = 6,
+                            ImageUrl = "/images/products/25a236b7-a9e8-45de-be5d-80f93d280820.png",
+                            IsFeatured = false,
+                            Name = "BMW 3 Serisi 2.0 Eksantrik Mili Sensörü",
+                            Price = 2850.00m,
+                            Stock = 15
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Brand = "Behr",
+                            CarEngine = "2.0",
+                            CarMake = "BMW",
+                            CarModel = "3 Serisi",
+                            CategoryId = 6,
+                            ImageUrl = "/images/products/273806d1-ca41-4d82-8a80-cb551f584af9.png",
+                            IsFeatured = false,
+                            Name = "BMW 3 Serisi 2.0 Su Radyatörü",
+                            Price = 5400.00m,
+                            Stock = 8
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Brand = "Sachs",
+                            CarEngine = "2.0",
+                            CarMake = "BMW",
+                            CarModel = "3 Serisi",
+                            CategoryId = 4,
+                            ImageUrl = "/images/products/34a1403a-979a-4d7c-ba0b-7f9ec3f17d5a.png",
+                            IsFeatured = false,
+                            Name = "BMW 3 Serisi 2.0 Debriyaj Seti",
+                            Price = 8900.00m,
+                            Stock = 6
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Brand = "Continental",
+                            CarEngine = "1.4 TSI",
+                            CarMake = "Volkswagen",
+                            CarModel = "Golf",
+                            CategoryId = 3,
+                            ImageUrl = "/images/products/54c25b60-d2d6-4a9b-b993-3c1ca2f6f882.png",
+                            IsFeatured = false,
+                            Name = "VW Golf 1.4 TSI Triger Kayışı Seti",
+                            Price = 4200.00m,
+                            Stock = 20
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Brand = "Bosch",
+                            CarEngine = "1.4 TSI",
+                            CarMake = "Volkswagen",
+                            CarModel = "Golf",
+                            CategoryId = 6,
+                            ImageUrl = "/images/products/5e4b4065-31d0-4bc7-be75-ce2aa9895e4a.png",
+                            IsFeatured = false,
+                            Name = "VW Golf 1.4 TSI Yakıt Enjektörü",
+                            Price = 3100.00m,
+                            Stock = 24
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Brand = "Mahle",
+                            CarEngine = "1.4 TSI",
+                            CarMake = "Volkswagen",
+                            CarModel = "Golf",
+                            CategoryId = 6,
+                            ImageUrl = "/images/products/6a71e24a-7681-4b0e-bbe0-ac3a113f12b0.png",
+                            IsFeatured = false,
+                            Name = "VW Golf 1.4 TSI Termostat Gövdesi",
+                            Price = 1850.00m,
+                            Stock = 15
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Brand = "Castrol",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 1,
+                            ImageUrl = "/images/products/0w20-motor-yagi.webp",
+                            IsFeatured = true,
+                            Name = "0w20 Motor Yağı 4L",
+                            Price = 1450.00m,
+                            Stock = 100
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Brand = "Mobil 1",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 1,
+                            ImageUrl = "/images/products/0w30-motor-yagi.webp",
+                            IsFeatured = false,
+                            Name = "0w30 Motor Yağı 4L",
+                            Price = 1550.00m,
+                            Stock = 85
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Brand = "Shell",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 1,
+                            ImageUrl = "/images/products/0w40-motor-yagi.webp",
+                            IsFeatured = false,
+                            Name = "0w40 Motor Yağı 4L",
+                            Price = 1650.00m,
+                            Stock = 70
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Brand = "Motul",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 1,
+                            ImageUrl = "/images/products/5w20-motor-yagi.webp",
+                            IsFeatured = false,
+                            Name = "5w20 Motor Yağı 4L",
+                            Price = 1350.00m,
+                            Stock = 90
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Brand = "Liqui Moly",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 1,
+                            ImageUrl = "/images/products/5w30-motor-yagi.webp",
+                            IsFeatured = true,
+                            Name = "5w30 Motor Yağı 4L",
+                            Price = 1750.00m,
+                            Stock = 120
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Brand = "SWAG",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 4,
+                            ImageUrl = "/images/products/75w80 şanzımanYağı 1L SWAG.webp",
+                            IsFeatured = false,
+                            Name = "75w80 Şanzıman Yağı 1L",
+                            Price = 450.00m,
+                            Stock = 50
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Brand = "FEBI",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 4,
+                            ImageUrl = "/images/products/75wşanzımanYağı!l FEBİ.webp",
+                            IsFeatured = false,
+                            Name = "75w Şanzıman Yağı 1L",
+                            Price = 480.00m,
+                            Stock = 45
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Brand = "SWAG",
+                            CarEngine = "2.0 TDI",
+                            CarMake = "Audi",
+                            CarModel = "A4",
+                            CategoryId = 4,
+                            ImageUrl = "/images/products/şanzımanfiltresiSWAG.webp",
+                            IsFeatured = false,
+                            Name = "Şanzıman Filtresi",
+                            Price = 1200.00m,
+                            Stock = 20
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Brand = "TOPRAN",
+                            CarEngine = "2.0",
+                            CarMake = "BMW",
+                            CarModel = "3 Serisi",
+                            CategoryId = 4,
+                            ImageUrl = "/images/products/şanzımanKarteriTOPRAN.webp",
+                            IsFeatured = false,
+                            Name = "Şanzıman Karteri",
+                            Price = 3500.00m,
+                            Stock = 10
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Brand = "MONROE",
+                            CarEngine = "1.6 TDI",
+                            CarMake = "Volkswagen",
+                            CarModel = "Golf",
+                            CategoryId = 7,
+                            ImageUrl = "/images/products/amortisörMONROE.webp",
+                            IsFeatured = true,
+                            Name = "Amortisör Arka (OE)",
+                            Price = 2250.00m,
+                            Stock = 30
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Brand = "SACHS",
+                            CarEngine = "1.8 TFSI",
+                            CarMake = "Audi",
+                            CarModel = "A4",
+                            CategoryId = 7,
+                            ImageUrl = "/images/products/AmortisörSACHS.webp",
+                            IsFeatured = false,
+                            Name = "Amortisör Ön",
+                            Price = 2450.00m,
+                            Stock = 25
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Brand = "FEBI",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 7,
+                            ImageUrl = "/images/products/amortisörtakozuFEBİ.webp",
+                            IsFeatured = false,
+                            Name = "Amortisör Takozu Ön",
+                            Price = 850.00m,
+                            Stock = 40
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Brand = "SWAG",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 7,
+                            ImageUrl = "/images/products/amörtisörtakozuSWAG.webp",
+                            IsFeatured = false,
+                            Name = "Amortisör Takozu Arka",
+                            Price = 750.00m,
+                            Stock = 35
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Brand = "BOSCH",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 5,
+                            ImageUrl = "/images/products/AmpülBOSCH.webp",
+                            IsFeatured = false,
+                            Name = "Sinyal Ampulü (Turuncu)",
+                            Price = 45.00m,
+                            Stock = 200
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Brand = "BOSCH",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 5,
+                            ImageUrl = "/images/products/AmpülBosch2.webp",
+                            IsFeatured = false,
+                            Name = "H7 Far Ampulü",
+                            Price = 120.00m,
+                            Stock = 150
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Brand = "ULO",
+                            CarEngine = "1.6",
+                            CarMake = "Mercedes",
+                            CarModel = "C Serisi",
+                            CategoryId = 5,
+                            ImageUrl = "/images/products/StopLambasıULO.webp",
+                            IsFeatured = false,
+                            Name = "Stop Lambası Arka",
+                            Price = 4200.00m,
+                            Stock = 8
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Brand = "BOSCH",
+                            CarEngine = "1.6 TDI",
+                            CarMake = "Volkswagen",
+                            CarModel = "Passat",
+                            CategoryId = 2,
+                            ImageUrl = "/images/products/frenbalatasıBOSCH.webp",
+                            IsFeatured = true,
+                            Name = "Ön Fren Balatası",
+                            Price = 1850.00m,
+                            Stock = 60
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Brand = "LPR",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 2,
+                            ImageUrl = "/images/products/frenbalatasıLPR.webp",
+                            IsFeatured = false,
+                            Name = "Arka Fren Balatası",
+                            Price = 1150.00m,
+                            Stock = 55
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Brand = "MGA",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 2,
+                            ImageUrl = "/images/products/frenbalatasıMGA.webp",
+                            IsFeatured = false,
+                            Name = "Ön Fren Balatası (MGA)",
+                            Price = 950.00m,
+                            Stock = 70
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Brand = "FEBI",
+                            CarEngine = "2.0 TDI",
+                            CarMake = "Audi",
+                            CarModel = "A6",
+                            CategoryId = 2,
+                            ImageUrl = "/images/products/Frendiski(FEBİ).webp",
+                            IsFeatured = false,
+                            Name = "Ön Fren Diski",
+                            Price = 2100.00m,
+                            Stock = 40
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Brand = "SWAG",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 2,
+                            ImageUrl = "/images/products/FrendiskiSWAG.webp",
+                            IsFeatured = false,
+                            Name = "Arka Fren Diski",
+                            Price = 1750.00m,
+                            Stock = 35
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Brand = "FEBI",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 2,
+                            ImageUrl = "/images/products/FrenHortumuFEBİ.webp",
+                            IsFeatured = false,
+                            Name = "Ön Fren Hortumu",
+                            Price = 350.00m,
+                            Stock = 100
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Brand = "DELPHI",
+                            CarEngine = "2.0d",
+                            CarMake = "BMW",
+                            CarModel = "5 Serisi",
+                            CategoryId = 6,
+                            ImageUrl = "/images/products/EksantrikSensörüDelphi.webp",
+                            IsFeatured = false,
+                            Name = "Eksantrik Devir Sensörü",
+                            Price = 1450.00m,
+                            Stock = 25
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Brand = "MGA",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 6,
+                            ImageUrl = "/images/products/EksantrikSensörüMGA.webp",
+                            IsFeatured = false,
+                            Name = "Eksantrik Sensörü",
+                            Price = 850.00m,
+                            Stock = 30
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Brand = "ELRING",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 6,
+                            ImageUrl = "/images/products/üstkapakcontasıELRİNG.webp",
+                            IsFeatured = false,
+                            Name = "Üst Kapak Contası",
+                            Price = 950.00m,
+                            Stock = 50
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Brand = "CONTITECH",
+                            CarEngine = "1.4 TSI",
+                            CarMake = "Volkswagen",
+                            CarModel = "Golf",
+                            CategoryId = 3,
+                            ImageUrl = "/images/products/TrigerkayışıCONTITECH.webp",
+                            IsFeatured = false,
+                            Name = "Triger Kayışı",
+                            Price = 1100.00m,
+                            Stock = 45
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Brand = "DAYCO",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 3,
+                            ImageUrl = "/images/products/trigerkayışıDAYCO.webp",
+                            IsFeatured = false,
+                            Name = "V Kayışı",
+                            Price = 450.00m,
+                            Stock = 80
+                        },
+                        new
+                        {
+                            Id = 58,
+                            Brand = "HEPU",
+                            CarEngine = "2.0 TDI",
+                            CarMake = "Audi",
+                            CarModel = "A4",
+                            CategoryId = 3,
+                            ImageUrl = "/images/products/TrigersetiHEPU.webp",
+                            IsFeatured = true,
+                            Name = "Triger Seti",
+                            Price = 4850.00m,
+                            Stock = 15
+                        },
+                        new
+                        {
+                            Id = 59,
+                            Brand = "INA",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 3,
+                            ImageUrl = "/images/products/TrigersetiINA.webp",
+                            IsFeatured = false,
+                            Name = "Triger Seti (INA)",
+                            Price = 4650.00m,
+                            Stock = 18
+                        },
+                        new
+                        {
+                            Id = 60,
+                            Brand = "Hepsi",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 8,
+                            ImageUrl = "/images/products/diğeraraçşarjkablosu.webp",
+                            IsFeatured = false,
+                            Name = "Araç Şarj Kablosu",
+                            Price = 2500.00m,
+                            Stock = 10
+                        },
+                        new
+                        {
+                            Id = 61,
+                            Brand = "Hepsi",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 8,
+                            ImageUrl = "/images/products/diğerkorna 12v.webp",
+                            IsFeatured = false,
+                            Name = "Korna 12V",
+                            Price = 350.00m,
+                            Stock = 60
+                        },
+                        new
+                        {
+                            Id = 62,
+                            Brand = "Hepsi",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 8,
+                            ImageUrl = "/images/products/diğerkorna24v.webp",
+                            IsFeatured = false,
+                            Name = "Korna 24V",
+                            Price = 400.00m,
+                            Stock = 40
+                        },
+                        new
+                        {
+                            Id = 63,
+                            Brand = "GOODYEAR",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 8,
+                            ImageUrl = "/images/products/diğertrafiksetiGOODYEAR.webp",
+                            IsFeatured = true,
+                            Name = "Trafik Seti",
+                            Price = 850.00m,
+                            Stock = 100
+                        },
+                        new
+                        {
+                            Id = 64,
+                            Brand = "BOSCH",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 8,
+                            ImageUrl = "/images/products/diğeraküşarjCihazıBOSCH.webp",
+                            IsFeatured = false,
+                            Name = "Akü Takviye Cihazı",
+                            Price = 3200.00m,
+                            Stock = 15
+                        },
+                        new
+                        {
+                            Id = 65,
+                            Brand = "Continental",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 8,
+                            IsFeatured = false,
+                            Name = "Continental Lastik 205/55 R16",
+                            Price = 2450.00m,
+                            Stock = 40
+                        },
+                        new
+                        {
+                            Id = 66,
+                            Brand = "Hepsi",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 8,
+                            IsFeatured = false,
+                            Name = "Kriko Seti 2 Ton",
+                            Price = 1250.00m,
+                            Stock = 20
+                        },
+                        new
+                        {
+                            Id = 67,
+                            Brand = "Hepsi",
+                            CarEngine = "Hepsi",
+                            CarMake = "Hepsi",
+                            CarModel = "Hepsi",
+                            CategoryId = 8,
+                            IsFeatured = false,
+                            Name = "Yangın Söndürme Tüpü 2kg",
+                            Price = 450.00m,
+                            Stock = 100
                         });
                 });
 

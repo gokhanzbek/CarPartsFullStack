@@ -5,10 +5,29 @@ body {
   display: flex;
   min-height: 100vh;
   min-width: 100vw;
-  background-color: #f3f4f6;
-  /* bg-gray-100 */
+  background-color: #f9fafb;
+  font-family: "Inter", "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 #root {
   width: 100%;
+}
+
+@keyframes car-arrive {
+  0% {
+    opacity: 0;
+    transform: translateX(-120%) scale(0.96);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(5%) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.car-arrival {
+  animation: car-arrive 1.25s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }

@@ -11,6 +11,9 @@ namespace CarParts.Application.Features.Products.Queries
 {
     public class GetProductsQuery : IRequest<ApiResponse<List<ProductDto>>>
     {
+        public string? Make { get; set; }
+        public string? Model { get; set; }
+        public string? Engine { get; set; }
     }
 
     public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, ApiResponse<List<ProductDto>>>
@@ -24,8 +27,16 @@ namespace CarParts.Application.Features.Products.Queries
 
         public async Task<ApiResponse<List<ProductDto>>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = await _context.Products
-                .Include(p => p.Category)
+            var query = _context.Products.Include(p => p.Category).AsQueryable();
+
+            if (!string.IsNullOrEmpty(request.Make) && request.Make != "Hepsi") 
+                query = query.Where(p => string.IsNullOrEmpty(p.CarMake) || p.CarMake == "Hepsi" || p.CarMake == request.Make);
+            if (!string.IsNullOrEmpty(request.Model) && request.Model != "Hepsi") 
+                query = query.Where(p => string.IsNullOrEmpty(p.CarModel) || p.CarModel == "Hepsi" || p.CarModel == request.Model);
+            if (!string.IsNullOrEmpty(request.Engine) && request.Engine != "Hepsi") 
+                query = query.Where(p => string.IsNullOrEmpty(p.CarEngine) || p.CarEngine == "Hepsi" || p.CarEngine == request.Engine);
+
+            var products = await query
                 .Select(p => new ProductDto
                 {
                     Id = p.Id,
@@ -34,7 +45,12 @@ namespace CarParts.Application.Features.Products.Queries
                     Price = p.Price,
                     Stock = p.Stock,
                     CategoryId = p.CategoryId,
-                    CategoryName = p.Category != null ? p.Category.Name : string.Empty
+                    CategoryName = p.Category != null ? p.Category.Name : string.Empty,
+                    IsFeatured = p.IsFeatured,
+                    CarMake = p.CarMake,
+                    CarModel = p.CarModel,
+                    CarEngine = p.CarEngine,
+                    ImageUrl = p.ImageUrl
                 })
                 .ToListAsync(cancellationToken);
 

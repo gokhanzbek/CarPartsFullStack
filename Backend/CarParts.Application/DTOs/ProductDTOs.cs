@@ -9,5 +9,10 @@ namespace CarParts.Application.DTOs
         public int Stock { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; } = string.Empty;
+        public bool IsFeatured { get; set; }
+        public string? CarMake { get; set; }
+        public string? CarModel { get; set; }
+        public string? CarEngine { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }
